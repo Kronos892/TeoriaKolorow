@@ -1,0 +1,59 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  background-color: #343a40;
+  padding: 0.5rem 1rem;
+  margin-bottom: 5px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  height: 40px;
+  margin-right: 0.5rem;
+}
+
+.navbar-brand span {
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.nav {
+  display: flex;
+  justify-content: start;
+  width: 100%;
+}
+
+.nav-item {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  padding: 5px 20px;
+  font-size: 16px;
+}
+
+.nav-item:hover {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.nav-item.active {
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c4c4c4;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a0a0a0;
+}
