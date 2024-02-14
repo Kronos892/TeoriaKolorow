@@ -7,9 +7,10 @@ import { useState, FormEvent, useEffect } from "react";
 interface Props {
   scheme: string;
   onValuesChange: (distance: number, complement: boolean) => void;
+  selectedModel: string; 
 }
 
-export default function AdditionalInputs({ scheme, onValuesChange }: Props) {
+export default function AdditionalInputs({ scheme, onValuesChange, selectedModel }: Props) {
   const [distance, setDistance] = useState<number>(90);
   const [complement, setComplement] = useState<boolean>(false);
 
@@ -104,42 +105,44 @@ export default function AdditionalInputs({ scheme, onValuesChange }: Props) {
             </Box>
           </>
         );
-      case "Analogic":
-        return (
-          <>
-            <Box
-              component="form"
-              sx={{
-                "& > :not(style)": { m: 1 },
-              }}
-              noValidate
-              autoComplete="off"
-              onSubmit={handleSubmit}
-            >
-              <TextField
-                id="outlined-basic"
-                label="Distance (0-60)"
-                variant="outlined"
-                type="number"
-                size="small"
-                sx={{ m: 1, minWidth: 150, fontSize: 16 }}
-                InputProps={{ inputProps: { min: 0, max: 60 } }}
-                value={distance}
-                onChange={handleDistanceChange}
-              />
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={complement}
-                    onChange={handleComplementChange}
+        case "Analogic":
+          return (
+            <>
+              <Box
+                component="form"
+                sx={{
+                  "& > :not(style)": { m: 1 },
+                }}
+                noValidate
+                autoComplete="off"
+                onSubmit={handleSubmit}
+              >
+                <TextField
+                  id="outlined-basic"
+                  label="Distance (0-60)"
+                  variant="outlined"
+                  type="number"
+                  size="small"
+                  sx={{ m: 1, minWidth: 150, fontSize: 16 }}
+                  InputProps={{ inputProps: { min: 0, max: 60 } }}
+                  value={distance}
+                  onChange={handleDistanceChange}
+                />
+                {selectedModel === "RGB" && (
+                  <FormControlLabel
+                    control={
+                      <Switch
+                        checked={complement}
+                        onChange={handleComplementChange}
+                      />
+                    }
+                    label="Add the complement"
                   />
-                }
-                label="Add the complement"
-              />
-            </Box>
-          </>
-        );
-      default:
+                )}
+              </Box>
+            </>
+          );
+        default:
     }
   };
 

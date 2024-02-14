@@ -1,15 +1,18 @@
 import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
-import calculationHSL from "./Calculation.tsx";
+import calculationHSL from "./Calculation.ts";
+import calculationRGB from "./CalculationRGB.ts";
+import { hsl } from "chroma-js";
 
 interface Props {
   hue: number;
   saturation: number;
   lightness: number;
   main?: boolean;
+  selectedModel?: string;
 }
 
-export default function Selector({ hue, saturation, lightness, main }: Props) {
+export default function Selector({ hue, saturation, lightness, main, selectedModel }: Props) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [adjustedSaturation, setAdjustedSaturation] = useState(saturation);
 
@@ -18,21 +21,38 @@ export default function Selector({ hue, saturation, lightness, main }: Props) {
       setAdjustedSaturation(saturation - 100);
     } else if (saturation < 0) {
       setAdjustedSaturation(saturation + 100);
-    } else setAdjustedSaturation(saturation);
+    } else {
+      setAdjustedSaturation(saturation);
+    }
   }, [saturation]);
 
   const radius = 170;
 
   // Przekształcanie HSL na współrzędne x, y
   useEffect(() => {
-    const position = calculationHSL(hue, adjustedSaturation, radius);
-    setPosition(position);
-  }, [hue, adjustedSaturation, radius]);
+    let newPosition;
+
+    switch (selectedModel) {
+      case 'HSL':
+        newPosition = calculationHSL(hue, adjustedSaturation, radius);
+        console.log(selectedModel);
+        break;
+      case 'RGB':
+        newPosition = calculationRGB({ red: 55, green: 88, blue: 60 });
+        console.log(selectedModel);
+        break;
+      default:
+        newPosition = calculationHSL(hue, adjustedSaturation, radius);
+        console.log(selectedModel);
+    }
+
+    console.log(newPosition);
+    setPosition(newPosition);
+  }, [hue, saturation, lightness, selectedModel, adjustedSaturation, radius]);
 
   const backgroundColor = `hsl(${hue}, ${adjustedSaturation}%, ${lightness}%)`;
-  const border = `${main === true ? "3px" : "2px"} solid ${
-    lightness > 75 ? "black" : "white"
-  }`;
+  const border = `${main === true ? "3px" : "2px"} solid ${lightness > 75 ? "black" : "white"
+    }`;
 
   const selectorStyle = {
     position: "absolute" as const,

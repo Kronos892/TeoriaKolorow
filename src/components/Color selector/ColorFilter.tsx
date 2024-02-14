@@ -22,7 +22,7 @@ export default function ColorFilter() {
   const handleSchemeChange = (event: SelectChangeEvent) => {
     setSelectedScheme(event.target.value as string);
   };
-
+  
   const handleModelChange = (event: SelectChangeEvent) => {
     setSelectedModel(event.target.value as string);
   };
@@ -71,6 +71,7 @@ export default function ColorFilter() {
       <AdditionalInputs
         scheme={selectedScheme}
         onValuesChange={handleAdditionalInputs}
+        selectedModel={selectedModel}
       />
 
       <ColorsLayout

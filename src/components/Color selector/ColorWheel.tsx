@@ -20,6 +20,7 @@ export default function ColorWheel({
   distance,
   complement,
 }: Props) {
+  console.log(scheme, model);
   const renderSelectors = () => {
     switch (scheme) {
       case "Monochromatic":
@@ -29,27 +30,32 @@ export default function ColorWheel({
               hue={hue}
               saturation={saturation - 40}
               lightness={lightness}
+              selectedModel={model} 
             />
             <Selector
               hue={hue}
               saturation={saturation - 20}
               lightness={lightness}
+              selectedModel={model}
             />
             <Selector
               hue={hue}
               saturation={saturation}
               lightness={lightness}
+              selectedModel={model}
               main={true}
             />
             <Selector
               hue={hue}
               saturation={saturation + 20}
               lightness={lightness}
+              selectedModel={model}
             />
             <Selector
               hue={hue}
               saturation={saturation + 40}
               lightness={lightness}
+              selectedModel={model}
             />
           </>
         );
