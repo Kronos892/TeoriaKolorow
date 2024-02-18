@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ColorWheel from "./ColorWheel";
 import ColorInput from "./ColorInput";
 import AdditionalColorInputs from "./AdditionalColorInput";
+import ColorInputRGB from "./ColorInputRGB";
 
 interface Props {
   scheme: string;
@@ -37,7 +38,7 @@ export default function ColorsLayout({
   const handleHSL = (newHSL: HSL) => {
     setHSl(newHSL);
   };
-
+  
   const renderAdditionalColors = () => {
     switch (scheme) {
       case "Monochromatic":
@@ -53,7 +54,8 @@ export default function ColorsLayout({
               Saturation={HSL.Saturation - 20}
               Lightness={HSL.Lightness}
             />
-            <ColorInput onHSLChange={handleHSL} />
+            {model === "HSL" ? <ColorInput onHSLChange={handleHSL} /> : <ColorInputRGB onHSLChange={handleHSL}/>}
+            
             <AdditionalColorInputs
               Hue={HSL.Hue}
               Saturation={HSL.Saturation + 20}

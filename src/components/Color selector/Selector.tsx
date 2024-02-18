@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
-import calculationHSL from "./Calculation.ts";
+import calculationHSL from "./CalculationHSL.ts";
 import calculationRGB from "./CalculationRGB.ts";
-import { hsl } from "chroma-js";
+
 
 interface Props {
   hue: number;
@@ -35,11 +35,11 @@ export default function Selector({ hue, saturation, lightness, main, selectedMod
     switch (selectedModel) {
       case 'HSL':
         newPosition = calculationHSL(hue, adjustedSaturation, radius);
-        console.log(selectedModel);
+        console.log(calculationHSL);
         break;
       case 'RGB':
-        newPosition = calculationRGB({ red: 55, green: 88, blue: 60 });
-        console.log(selectedModel);
+        newPosition = calculationRGB({ red: hue, green: saturation, blue: lightness });
+        console.log(calculationRGB);
         break;
       default:
         newPosition = calculationHSL(hue, adjustedSaturation, radius);

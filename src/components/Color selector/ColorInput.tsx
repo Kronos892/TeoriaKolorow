@@ -16,6 +16,7 @@ interface Props {
     Saturation: number;
     Lightness: number;
   }) => void;
+  
 }
 
 const CustomButton = styled(Button)`
@@ -77,6 +78,8 @@ export default function ColorInput({ onHSLChange }: Props) {
     setOpen(true);
     navigator.clipboard.writeText(hslToHex);
   };
+
+  // maksymalny zakres liczby w inpucie 
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

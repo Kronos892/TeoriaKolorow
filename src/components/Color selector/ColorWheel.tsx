@@ -26,37 +26,15 @@ export default function ColorWheel({
       case "Monochromatic":
         return (
           <>
-            <Selector
-              hue={hue}
-              saturation={saturation - 40}
-              lightness={lightness}
-              selectedModel={model} 
-            />
-            <Selector
-              hue={hue}
-              saturation={saturation - 20}
-              lightness={lightness}
-              selectedModel={model}
-            />
+            
             <Selector
               hue={hue}
               saturation={saturation}
               lightness={lightness}
               selectedModel={model}
-              main={true}
+              
             />
-            <Selector
-              hue={hue}
-              saturation={saturation + 20}
-              lightness={lightness}
-              selectedModel={model}
-            />
-            <Selector
-              hue={hue}
-              saturation={saturation + 40}
-              lightness={lightness}
-              selectedModel={model}
-            />
+            
           </>
         );
       case "Contrast":
@@ -153,6 +131,7 @@ export default function ColorWheel({
     }
   };
 
+  
   const calculateColor = (lightness: number): string => {
     if (lightness === 50) {
       return "transparent";
@@ -164,8 +143,8 @@ export default function ColorWheel({
       return `rgba(255, 255, 255, ${Math.min(1, Number(alpha))})`;
     }
   };
-
-  const backgroundColor = calculateColor(lightness);
+  console.log
+  const backgroundColor = model === "HLS" ? calculateColor(lightness) : "transparent";
 
   return (
     <Box position="relative">
