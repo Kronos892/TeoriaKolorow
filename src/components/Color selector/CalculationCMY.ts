@@ -1,8 +1,8 @@
 // Interface for RGB color properties
 interface RGBColorPickerProps {
-    red: number;
-    green: number;
-    blue: number;
+    cyan: number;
+    magenta: number;
+    yellow: number;
     
 }
 
@@ -14,10 +14,10 @@ interface Coordinates {
 }
 
 // Function to calculate coordinates from RGB color values
-const calculationRGB = ({ red, green, blue, }: RGBColorPickerProps): Coordinates => {
-    const r = red / 255;
-    const g = green / 255;
-    const b = blue / 255;
+const calculationCMY = ({ cyan, magenta, yellow }: RGBColorPickerProps): Coordinates => {
+    const r = cyan / 255;
+    const g = magenta / 255;
+    const b = yellow / 255;
 
     const M = Math.max(r, g, b);
     const m = Math.min(r, g, b);
@@ -67,4 +67,4 @@ const calculationRGB = ({ red, green, blue, }: RGBColorPickerProps): Coordinates
     return { x, y };
 };
 
-export default calculationRGB
+export default calculationCMY;

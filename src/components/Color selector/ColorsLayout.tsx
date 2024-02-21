@@ -3,6 +3,7 @@ import ColorWheel from "./ColorWheel";
 import ColorInput from "./ColorInput";
 import AdditionalColorInputs from "./AdditionalColorInput";
 import ColorInputRGB from "./ColorInputRGB";
+import React from "react";
 
 interface Props {
   scheme: string;
