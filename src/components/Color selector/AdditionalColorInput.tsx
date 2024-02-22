@@ -3,6 +3,7 @@ import { Box, TextField, Snackbar, Button } from "@mui/material";
 import styled from "styled-components";
 import chroma from "chroma-js";
 import FormDialog from "./Dialog";
+import React from "react";
 
 interface Props {
   Hue: number;
