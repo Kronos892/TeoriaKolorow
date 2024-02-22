@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+
 import {
   Button,
   TextField,
@@ -20,6 +20,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useAtom } from "jotai";
 import { palettesAtom } from "../paletteState";
 import { savePalettesToLocalStorage } from "../paletteState";
+import React from "react";
+import { useState } from "react";
 
 interface Props {
   color: string;
