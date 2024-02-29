@@ -15,24 +15,25 @@ export default function PalettesDisplay({ }: PaletteDisplayProps) {
 
     if (paletteContainerRef.current[paletteIndex] && paletteToExport && !exporting) {
       const paletteElement = paletteContainerRef.current[paletteIndex];
-      const exportButton = paletteElement.querySelector("button");
+      const exportButton = paletteElement?.querySelector("button");
 
       if (exportButton) {
         exportButton.style.display = "none";
         setExporting(true);
-
-        const canvas = await html2canvas(paletteElement);
-
-        canvas.toBlob((blob) => {
-          const link = document.createElement("a");
-          link.href = URL.createObjectURL(blob);
-          link.download = `${paletteToExport.name}_palette.png`;
-          link.click();
-          URL.revokeObjectURL(link.href);
-
-          exportButton.style.display = "block";
-          setExporting(false);
-        }, 'image/png');
+        if (paletteElement){
+          const canvas = await html2canvas(paletteElement);
+          canvas.toBlob((blob) => {
+            if (blob) {
+              const link = document.createElement("a");
+              link.href = URL.createObjectURL(blob);
+              link.download = `${paletteToExport.name}_palette.png`;
+              link.click();
+              URL.revokeObjectURL(link.href);
+            }
+            exportButton.style.display = "block";
+            setExporting(false);
+          }, 'image/png');
+        }
       }
     }
   };
@@ -62,7 +63,7 @@ export default function PalettesDisplay({ }: PaletteDisplayProps) {
                 width: "200px",
                 margin: "10px",
                 padding: "15px",
-                fontSize: "#0caba8",
+                fontSize: "16px",
                 color: "#b2b7bf",
                 borderRadius: "5px",
                 textAlign: "left",

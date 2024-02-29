@@ -63,7 +63,6 @@ const calculationRGB = ({ red, green, blue, }: RGBColorPickerProps): Coordinates
     const y = 170 - distance * Math.sin(angleInRadians) * 2 ;
     ;
     
-
     return { x, y };
 };
 

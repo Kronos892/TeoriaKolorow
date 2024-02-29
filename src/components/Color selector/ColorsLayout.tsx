@@ -72,7 +72,7 @@ export default function ColorsLayout({
       case "Contrast":
         return (
           <>
-            <ColorInput onHSLChange={handleHSL} />
+            {model === "HSL" ? <ColorInput onHSLChange={handleHSL} /> : <ColorInputRGB onHSLChange={handleHSL}/>}
             <AdditionalColorInputs
               Hue={HSL.Hue + 180}
               Saturation={HSL.Saturation}
@@ -88,7 +88,7 @@ export default function ColorsLayout({
               Saturation={HSL.Saturation}
               Lightness={HSL.Lightness}
             />
-            <ColorInput onHSLChange={handleHSL} />
+            {model === "HSL" ? <ColorInput onHSLChange={handleHSL} /> : <ColorInputRGB onHSLChange={handleHSL}/>}
             <AdditionalColorInputs
               Hue={HSL.Hue + 180 + distance}
               Saturation={HSL.Saturation}
@@ -104,7 +104,7 @@ export default function ColorsLayout({
               Saturation={HSL.Saturation}
               Lightness={HSL.Lightness}
             />
-            <ColorInput onHSLChange={handleHSL} />
+            {model === "HSL" ? <ColorInput onHSLChange={handleHSL} /> : <ColorInputRGB onHSLChange={handleHSL}/>}
             <AdditionalColorInputs
               Hue={HSL.Hue + distance}
               Saturation={HSL.Saturation}
@@ -125,7 +125,7 @@ export default function ColorsLayout({
               Saturation={HSL.Saturation}
               Lightness={HSL.Lightness}
             />
-            <ColorInput onHSLChange={handleHSL} />
+            {model === "HSL" ? <ColorInput onHSLChange={handleHSL} /> : <ColorInputRGB onHSLChange={handleHSL}/>}
             <AdditionalColorInputs
               Hue={HSL.Hue + distance}
               Saturation={HSL.Saturation}

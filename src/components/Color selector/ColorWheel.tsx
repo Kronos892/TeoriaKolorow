@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import Selector from "./Selector";
-import React from 'react';
+import React from "react";
 
 interface Props {
   hue: number;

@@ -62,10 +62,7 @@ export default function ColorFilter() {
           <MenuItem value="HSL">HSL</MenuItem>
           <MenuItem value="RGB">RGB</MenuItem>
           <MenuItem value="CMY">CMY</MenuItem>
-          <MenuItem value="CMYK">CMYK</MenuItem>
-          <MenuItem value="YUV">YUV</MenuItem>
-          <MenuItem value="YIQ">YIQ</MenuItem>
-          <MenuItem value="NCS">NCS</MenuItem>
+
         </Select>
       </FormControl>
       <AdditionalInputs

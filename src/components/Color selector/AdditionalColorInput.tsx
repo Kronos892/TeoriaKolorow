@@ -52,6 +52,7 @@ export default function AdditionalColorInputs({
   Hue,
   Saturation,
   Lightness,
+  
 }: Props) {
   const [open, setOpen] = useState(false);
   const [adjestedHue, setAdjustedHue] = useState(Hue);
